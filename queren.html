@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="utf-8">
+    <meta charset="utf-8">
+    <title>外出登记</title>
+
+</head>
+<body>
+    <div>
+        <p>
+            <b>我的位置  </b>
+            <span style=color:red> *  </span>
+            &ensp;  &ensp;&ensp;&ensp;&ensp;&ensp; 山西大学（大东关校区）
+        </p>
+        <div class="link-top">
+            <style>
+                /*中间的过度的横线*/
+                .link-top {
+                    width: 100%;
+                    height: 1px;
+                    border-top: solid #ACC0D8 1px;
+                }
+            </style>
+        </div>
+        <p>
+            <b>请选择假条：</b>
+            <span style=color:red>*</span>
+        </p>
+        <p style='text-align: left'>
+            <b>假条编号：174326 </b>
+            <span id="ytg" style="float: right; color: green; font-weight: 300; font-size: 12px;">已通过</span>
+            <style>
+                #ytg {
+                    border: 1.2px solid green;
+                }
+            </style>
+        </p>
+
+        <p style=" font-weight: 300; font-size: 10px;">
+            事由：外出购买生活必需品
+        </p>
+
+        <p style=" font-weight: 300; font-size: 10px;">
+            去向：山西省 太原市 杏花岭区
+        </p>
+        <p style=" font-weight: 300; font-size: 10px;">
+            假期：<span id="date1"></span> 07:00-<span id="date2">2020-01-10</span> 23:30
+        </p>
+        <img src="image/duihao.jpg" width="19" height="19" style="position: absolute; right: 24px; top: 145px;">
+
+        <div class="link-top" style="position: absolute; bottom: 110px">
+            <style>
+                /*中间的过度的横线*/
+                .link-top {
+                    width: 100%;
+                    height: 1px;
+                    border-top: solid #ACC0D8 1px;
+                }
+            </style>
+        </div>
+        <div>
+            <button onclick=" window.location.href = 'http://localhost:8080/%E7%99%BB%E5%BD%95%E5%B7%A5%E7%A8%8B/saoma.html'"
+                    style="background: DodgerBlue; color: white; width: 100%; height: 25px; position: absolute; bottom: 70px; border: 3px solid DodgerBlue; ">
+                确认外出
+            </button>
+          
+
+        </div>
+    </div>
+    <p style="text-align:center;color:red;   position :absolute;  bottom:0px">
+        <b>警告：一旦确认外出，180秒内必须离开学校，负责请假失效！</b>
+    </p>
+    <script>
+        function checkTime(i) {
+            return (i < 10) ? "0" + i : i;
+        }
+        setInterval(displayTime, 100);
+        function displayTime() {
+            var currentTime = new Date(),
+            h = checkTime(currentTime.getHours()),
+            m = checkTime(currentTime.getMinutes()),
+            s = checkTime(currentTime.getSeconds());
+            document.getElementById("time").innerHTML = h + ":" + m + ":" + s;
+        }
+    </script>
+    <script>
+        var timeleft = 180;
+        var timer = setInterval(function () {
+            timeleft--;
+            document.getElementById("countdown").textContent = timeleft;
+            if (timeleft <= 0)
+                clearInterval(timer)
+        }, 1000);
+    </script>
+
+
+    <script>
+        var today = new Date();
+        var y = today.getFullYear();
+        var m = today.getMonth() + 1;
+        var d = today.getDate();
+        document.getElementById('date1').innerHTML = y + "-" + m + "-" + d;
+        document.getElementById('date2').innerHTML = y + "-" + m + "-" + d;
+        document.getElementById('date3').innerHTML = y + "-" + m + "-" + d;
+    </script>
+</body>
+</html>
+<!--<p style="background-color: DodgerBlue;
+     color: white; position: absolute; height: 20px; text-align: center; line-height: 20px; width: 100%; bottom: 60px;">
+    确认外出
+
+
+
+
+    <input type="file" name="image" id="file" onchange="loadFile(event)" accept="image/*" style="display: none;" />
+    <div class="main">
+       <span id="timer"><span id="countdown">180</span>S</span>
+        <p><span id="date3">Date </span><span id="time"></span></p>
+    </div>
+</p>-->
